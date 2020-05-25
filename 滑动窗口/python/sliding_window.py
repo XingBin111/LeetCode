@@ -63,7 +63,7 @@ class MinWindowDict:
                 if window[c1] == needs[c1]:                 # 小心
                     matches += 1                            # 对于重复的c1只需要加一次即可
 
-            while matches == len(needs):                    # 找到解之后, 慢指针不断右移来找到最短的字符串, 直到不匹配为止
+            while matches == len(needs):                    # 找到解之后, 左指针不断右移来找到最短的字符串, 直到不匹配为止
                 if minLen < 1 + right - left:
                     res = s[left: right+1]
 

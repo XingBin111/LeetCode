@@ -23,7 +23,7 @@ class FindAnagrams:
                 if window[c1] == needs[c1]:             # 小心
                     matches += 1
 
-            while matches == len(needs):
+            while matches == len(needs):                # 优化解
                 res.append(right - len(t) + 1)
                 c2 = s[left]
                 if c2 in needs:

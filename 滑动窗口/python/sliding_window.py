@@ -60,25 +60,26 @@ class MinWindowDict:
             c1 = s[right]
             if c1 in t:
                 window[c1] = window.get(c1, 0) + 1
-                if window[c1] == needs[c1]:
-                    matches += 1
-            right += 1
+                if window[c1] == needs[c1]:                 # 小心
+                    matches += 1                            # 对于重复的c1只需要加一次即可
 
-            while matches == len(needs):
+            while matches == len(needs):                    # 找到解之后, 慢指针不断右移来找到最短的字符串, 直到不匹配为止
                 if minLen < 1 + right - left:
                     res = s[left: right+1]
 
                 c2 = s[left]
                 if c2 in t:
                     window[c2] -= 1
-                if window[c2] != needs[c2]:
-                    matches -= 1
+                if window[c2] < needs[c2]:                  # 小心
+                    matches -= 1                            # 未覆盖
                 left += 1
+            right += 1  # 快指针不断右移, 直到找到解
         return res if minLen == (len(s)+1) else ""
 
 
-s = "EBBANCF"
-t = "ABC"
+if __name__ == "__main__":
+    s = "EBBANCF"
+    t = "ABC"
 
-print(MinWindowTraverse.sliding_window(s, t))
+    print(MinWindowTraverse.sliding_window(s, t))
 

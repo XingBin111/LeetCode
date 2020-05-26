@@ -43,10 +43,10 @@ class BinSearch:
             elif nums[mid] > target:
                 # 搜索区间转为[left, mid-1], 因为mid已经验证过了, 所以-1
                 right = mid - 1
-
-        if left == len(nums):
+        # left的范围为[0, len(nums)]
+        if left == len(nums) or nums[left] != target:
             return -1
-        return -1 if nums[left] != target else left
+        return left
 
     @staticmethod
     def right_bound(nums, target):
@@ -62,9 +62,10 @@ class BinSearch:
                 left = mid + 1
             elif nums[mid] > target:
                 right = mid - 1
-        if right == len(nums):
+        # right的范围为[-1, len(nums)-1]
+        if right == -1 or nums[right] != target:
             return -1
-        return -1 if nums[right] != target else right
+        return right
 
 
 if __name__ == '__main__':

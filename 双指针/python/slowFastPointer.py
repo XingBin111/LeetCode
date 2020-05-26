@@ -4,7 +4,7 @@ class ListNode:
         self.next = None
 
 
-class DoublePointer:
+class SlowFastPointer:
 
     @staticmethod
     def has_cycle(head: ListNode):
@@ -78,7 +78,7 @@ def use_cycle():
         node.next = ListNode(i)
         node = node.next
 
-    print(DoublePointer.has_cycle(head))
+    print(SlowFastPointer.has_cycle(head))
     circle_node = node
 
     for i in range(4, 9):
@@ -87,7 +87,7 @@ def use_cycle():
     node.next = circle_node
 
     print(circle_node.data)
-    print(DoublePointer.detectCycle(head).data)
+    print(SlowFastPointer.detectCycle(head).data)
 
 
 def use_middle_and_reciprocal():
@@ -97,8 +97,8 @@ def use_middle_and_reciprocal():
         node.next = ListNode(i)
         node = node.next
 
-    print(DoublePointer.findMiddle(head).data)
-    print(DoublePointer.reciprocal(head, 3).data)
+    print(SlowFastPointer.findMiddle(head).data)
+    print(SlowFastPointer.reciprocal(head, 3).data)
 
 
 if __name__ == "__main__":

@@ -48,9 +48,10 @@ class BinSearch:
                 # 搜索区间转为[left, mid), 因为mid不在搜索区间内, 所以right=mid就行
                 right = mid
 
-        if left == len(nums):
+        # left=right的范围为[0, len(nums)]
+        if left == len(nums) or nums[left] != target:
             return -1
-        return -1 if nums[left] != target else left
+        return left
 
 
     @staticmethod
@@ -69,9 +70,10 @@ class BinSearch:
             elif nums[mid] > target:
                 right = mid
 
-        if right - 1 == len(nums):
+        # left=right的范围为[0, len(nums)]
+        if right == 0 or nums[right - 1] != target:
             return -1
-        return -1 if nums[right - 1] != target else right - 1
+        return right - 1
 
 
 if __name__ == '__main__':
@@ -80,4 +82,4 @@ if __name__ == '__main__':
     targets = nums + [7, 0, 2.5]
 
     for target in targets:
-        print(BinSearch.binSearch(nums, target))
+        print(BinSearch.right_bound(nums, target))

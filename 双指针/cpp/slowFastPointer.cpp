@@ -46,7 +46,7 @@ class SlowFastPointer
             return slow;
         }
 
-        ListNode* reciprocal(ListNode* head)
+        ListNode* findMiddle(ListNode* head)
         {
             ListNode* fast = head;
             ListNode* slow = head;
@@ -56,6 +56,23 @@ class SlowFastPointer
                 slow = slow->next;
             }
             return slow;
+        }
+
+        ListNode* reciprocal(ListNode* head, int k)
+        {
+            ListNode* fast = head;
+            ListNode* slow = head;
+            while (k > 0)
+            {
+                fast = fast -> next;
+                k--;
+            }
+            while(fast != NULL)
+            {
+                fast = fast -> next;
+                slow = slow -> next;
+            }
+            return slow; 
         }
 };
 
@@ -82,7 +99,7 @@ void use_cycle()
     cout << solution.detectCycle(head)->val << endl;
 }
 
-void use_reciprocal()
+void use_findMiddle()
 {
     SlowFastPointer solution;
     ListNode* head = new ListNode();
@@ -92,12 +109,13 @@ void use_reciprocal()
         node->next = new ListNode(i);
         node = node->next;
     }
-    cout << solution.reciprocal(head)->val << endl;
+    cout << solution.findMiddle(head)->val << endl;
+    cout << solution.reciprocal(head, 3)->val << endl;
 }
 
 int main()
 {
     use_cycle();
-    use_reciprocal();
+    use_findMiddle();
     return 0;
 }

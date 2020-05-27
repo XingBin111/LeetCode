@@ -74,5 +74,19 @@ def super_egg_drop_table_bin_search(K, N):
     return dp(K, N)
 
 
+# def super_egg_drop_itertion(K, N):
+#     """
+#     迭代版本, 时间复杂度: O(K*N), 空间复杂度O(KN)
+#     """
+#     import numpy as np
+#     dp_table = np.zeros((K+1, N+1))
+#     m = 0
+#     while dp_table[K, m] < N:
+#         m += 1
+#         for k in range(1, K+1):
+#             dp_table[k, m] = dp_table[k, m-1] + dp_table[k-1, m-1] + 1
+#     return m
+
+
 if __name__ == "__main__":
     print(super_egg_drop_table_bin_search(2, 100))

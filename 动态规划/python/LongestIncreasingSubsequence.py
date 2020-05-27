@@ -11,24 +11,28 @@ def LSI(nums):
 
 
 def lengthOfLIS(nums):
+    """
+    复杂度为O(n*log n)
+    """
     top = [0] * len(nums)
     piles = 0
-    for i in range(len(nums)):
+    for i in range(1, len(nums)):
         left = 0
         right = piles
         while left < right:
             mid = (right + left) // 2
             if top[mid] < nums[i]:
                 left = mid + 1
-            elif nums[mid] > nums[i]:
+            elif top[mid] > nums[i]:
                 right = mid
             else:
                 left = mid + 1
-        if right == piles:
+        top[left] = nums[i]
+        if left == piles:
             piles += 1
-        top[piles] = nums[i]
-    return piles
+    return top, piles
 
 
-nums = [10, 9, 2, 5, 3, 7, 101, 18]
-print(lengthOfLIS(nums))
+if __name__ == "__main__":
+    nums = [10, 9, 2, 5, 3, 7, 101, 18]
+    print(lengthOfLIS(nums))

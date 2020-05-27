@@ -1,6 +1,6 @@
 def LSI(nums):
     """
-    寻找nums中最常递增子序列， 复杂度为O(N^2)
+    寻找nums中最长递增子序列， 复杂度为O(N^2)
     """
     dp = [1] * len(nums)
     for i in range(1, len(nums)):

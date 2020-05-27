@@ -37,17 +37,19 @@ def coin_change_memo(coins, amount):
 
 
 def coin_change_iteration(coins, amount):
-    l = [amount+1] * (amount + 1)
+    l = [amount] * (amount+1)
     l[0] = 0
-    for i in range(amount):
+    for i in range(1, amount+1):
         res = l[i]
         for c in coins:
             if i - c < 0:
                 continue
             res = min(res, l[i-c] + 1)
+        l[i] = res
+    return l
 
 
 if __name__ == '__main__':
     coins = [1, 2, 5]
     amount = 11
-    print(coin_change_memo(coins, amount))
+    print(coin_change_iteration(coins, amount))

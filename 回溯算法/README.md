@@ -11,4 +11,16 @@
             backtrack(路径, 选择列表)
             撤销选择
 
-其实就是在循环里面做递归。
+其实就是在循环里面做递归。经典问题就是全排列问题：
+
+    # 在循环中递归
+    def backtrack(nums, track):
+        if len(track) == len(nums):
+            print(track)
+            return
+        for e in nums:
+            if e in track:
+                continue
+            track.append(e)
+            backtrack(nums, track)
+            track.pop()

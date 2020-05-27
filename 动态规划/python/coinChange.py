@@ -47,7 +47,6 @@ def coin_change_iteration(coins, amount):
             res = min(res, l[i-c] + 1)
 
 
-
 if __name__ == '__main__':
     coins = [1, 2, 5]
     amount = 11

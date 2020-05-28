@@ -26,12 +26,12 @@ def longestPalindromeSubseq1(s):
 
 def longestPalindromeSubseq2(s):
     n = len(s)
-    if n == "":
+    if n == 0:
         return s
     res = s[0]
 
     def extend(i, j):
-        while i > 0 and j < n and s[i] == s[j]:
+        while i >= 0 and j < n and s[i] == s[j]:
             i -= 1
             j += 1
         return s[i + 1: j]
@@ -44,5 +44,5 @@ def longestPalindromeSubseq2(s):
 
 
 if __name__ == "__main__":
-    s = "babad"
+    s = "bb"
     print(longestPalindromeSubseq2(s))

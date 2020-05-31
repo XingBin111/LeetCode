@@ -37,9 +37,24 @@ def maxA(N):
 
 
 def maxA_fast(N):
-    pass
+    """
+    次数最多的A一定出现在类似于：
+    A, ..., A, ctrl-A, ctrl-C, ctrl-V, ..., ctrl-V, A, ..., A, ctrl-A, ctrl-C, ctrl-V, ..., ctrl-V, ....
+    即最后一个键一定是A或ctrl-V。
+    dp中第i个元素表示按键i次，屏幕上出现最多的A的个数，另外假设在第j次是最后一次按ctrl-C，所以从第j次开始的按键为：ctrl-V, ..., ctrl-V
+
+    按键：..., A, ctrl-A, ctrl-C, ctrl-V
+    索引：    j-2  j-1      j
+    """
+    dp = [0] * (N+1)
+    for i in range(1, N+1):
+        dp[i] = dp[i-1] + 1
+        for j in range(2, i):
+            dp[i] = max(dp[i], dp[j-2]*(i-j+1))
+    return dp[N]
 
 
 if __name__ == "__main__":
     N = 11
+    print(maxA(N))
     print(maxA_fast(N))

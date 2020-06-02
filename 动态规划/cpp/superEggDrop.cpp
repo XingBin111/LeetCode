@@ -25,6 +25,7 @@ int superEggDrop(int k, int N)
     return res;
 }
 
+// 时间效率为O(k*N*logN), 空间效率为O(k*N)
 int superEggDropBinSearch(int k, int N)
 {
     if(k == 1)

@@ -24,19 +24,18 @@ dp[i, k, 1] = max(dp[i-1, k-1, 0]-prices[i], dp[i-1, k, 1])
 import numpy as np
 
 
-def max_profit(prices):
+def max_profit(prices, K):
     """
     该函数为通用框架, 下面函数是针对各情况的简化
     dp表中: i表示第i天的状态, k表示第i天的交易次数, s=2表示第i天的状态(0表示有股票, 1表示没股票)
     约定卖股票时k不变, 买股票时k+=1
     """
-    K = 3
     dp = np.zeros((len(prices), K+1, 2))
     for i in range(len(prices)):
         for k in range(0, K+1):
             if i == 0:
                 dp[i, k, 0] = 0
-                dp[i, k, 1] = -np.inf
+                dp[i, k, 1] = -prices[i]
                 continue
             if k == 0:
                 dp[i, k, 0] = 0
@@ -47,7 +46,7 @@ def max_profit(prices):
 
             # 第i天, 已经交易了k次, 手中有股票, 所以在第i-1天买股票或在第i天不买不卖
             dp[i, k, 1] = max(dp[i-1, k-1, 0]-prices[i], dp[i-1, k, 1])
-    # return dp[len(prices)-1, K, 0]
+    # return int(dp[len(prices)-1, K, 0])
     return dp
 
 
@@ -122,4 +121,5 @@ def max_profit_k_inf_with_fee(prices, fee=1):
 if __name__ == "__main__":
     prices = [3, 2, 6, 5, 0, 3]
     # prices = [1, 2, 3]
-    print(max_profit(prices))
+    K = 1
+    print(max_profit_k_2(prices))

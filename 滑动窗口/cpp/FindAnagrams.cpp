@@ -1,51 +1,56 @@
 #include <iostream>
+#include <vector>
 #include <string>
 #include <unordered_map>
-#include <vector>
+#include "limits.h"
 
 using namespace std;
 
-vector<int> findAnagrams(const string& s, const string& t)
+vector<int> findAnagrams(const string& s, const string& p)
 {
     unordered_map<char, int> window;
     unordered_map<char, int> needs;
-    for (char c : t) needs[c]++;
-
-    int right = 0, left = 0;
-    int start = 0, minLen = INT32_MAX;
+    for(char x: p)
+        needs[x]++;
+    int left = 0, right = 0;
     int match = 0;
-    vector<int> v;
-    while(right < s.size())
+    vector<int> res;
+    for(int i=0; i<s.size(); i++)
     {
-        char c1 = s[right];
-        if(needs.count(c1))
+
+        if(match == p.size())
+            res.push_back(i-3);
+        if(needs.count(s[i]))
         {
-            window[c1]++;
-            if(window[c1] == needs[c1])
+            window[s[i]]++;
+            if(window[s[i]] == needs[s[i]])
                 match++;
         }
 
-        while(match == needs.size())
-        {   
-            v.push_back(left);
-            char c2 = s[left];
-            window[c2]--;
-            if(window[c2] != needs[c2])
+        if(i <=2)
+            continue;
+
+        if(needs.count(s[i-3]))
+        {
+            window[s[i-3]]--;
+            if(window[s[i-3]] != needs[s[i-3]])
                 match--;
-            left++;
         }
-        right++;
+
+        
     }
-    return v;
+    return res;
 }
 
 int main()
 {
-    string s = "cbaebabacd";
-    string t = "abc";
-    vector<int> v = findAnagrams(s, t);
+    string s = "cbaebabacdasdbczabdabcbac";
+    string p = "abc";
+    vector<int> v = findAnagrams(s, p);
     for(auto& x: v)
     {
-        cout << s.substr(x, t.size()) << endl;
+        cout << s.substr(x, p.size()) << endl;
     }
+    return 0;
+
 }

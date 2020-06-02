@@ -45,7 +45,6 @@ def erase_overlap_intervals(intvs):
     return len(intvs) - interval_schedule_for(intvs)
 
 
-
 if __name__ == "__main__":
-    intvs = [[1, 3], [2, 4], [3, 6]]
-    print(interval_schedule_for(intvs))
+    intvs = [[1, 3], [3, 6]]
+    print(interval_schedule_while(intvs))

@@ -89,4 +89,4 @@ def super_egg_drop_table_bin_search(K, N):
 
 
 if __name__ == "__main__":
-    print(super_egg_drop_table_bin_search(2, 100))
+    print(super_egg_drop_table_bin_search(2, 10))

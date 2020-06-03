@@ -57,6 +57,11 @@ int minDistanceMemo(const string& s1, const string& s2, unordered_map<double_str
         return s2.size();
     if(s2.size() == 0)   
         return s1.size();
+
+    double_string tmp(s1, s2);
+    if(memo.count(tmp)) 
+        return memo[tmp];
+        
     int min_distance;
     if(s1[0] != s2[0])
     {
@@ -67,7 +72,7 @@ int minDistanceMemo(const string& s1, const string& s2, unordered_map<double_str
     }
     else
         min_distance = minDistanceMemo(s1.substr(1, s1.size()-1), s2.substr(1, s2.size()-1), memo);
-    double_string tmp(s1, s2);
+    
     memo[tmp] = min_distance;
     return min_distance; 
 }

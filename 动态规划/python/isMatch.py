@@ -44,7 +44,7 @@ def isMatchMemo(text, pattern):
 
 
 if __name__ == "__main__":
-    s = "aaabc"
-    p = "a.*bcd"
+    s = "aaaa"
+    p = "aaaa"
     print(isMatchMemo(s, p))
 

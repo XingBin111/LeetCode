@@ -51,9 +51,6 @@ class MaxPQ:
         self.pq[i] = self.pq[j]
         self.pq[j] = tmp
 
-    def less(self, i, j):
-        return self.pq[i] < self.pq[j]
-
     def parent(self, root):
         return root // 2
 

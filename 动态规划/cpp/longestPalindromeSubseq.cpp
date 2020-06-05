@@ -2,7 +2,6 @@
 #include <vector>
 #include <string>
 #include <algorithm>
-#include <unordered_map>
 
 using namespace std;
 
@@ -36,7 +35,7 @@ int longestPalindromeSubseq(const string& s)
             if(s[i] == s[j] && isPalindrome(s.substr(i, j-i+1))) 
                 dp_table[i][j] = dp_table[i+1][j-1] + 2;
             else
-                dp_table[i][j] = max({dp_table[i][j-1], dp_table[i+1][j]});
+                dp_table[i][j] = max(dp_table[i][j-1], dp_table[i+1][j]);
         }
     }
     return dp_table[0][n-1];
@@ -66,9 +65,60 @@ string longestPalindromeSubseqExtend(const string& s)
     return res;
 }
 
+
+string Manacher(string s) {
+    // Insert '#'
+    string t = "$#";
+    for (int i = 0; i < s.size(); ++i) {
+        t += s[i];
+        t += "#";
+    }
+    
+    int n = t.size();
+    int* p = new int[n];
+    int C = 0, R = 0;
+    for(int i=1; i<n-1; i++)
+    {
+        int i_mirror = 2 * C - i;
+        if(R > i)
+            p[i] = min(R-i, p[i_mirror]);
+        else
+            p[i] = 0;
+        
+        // 不断向右拓展, 所有节点访问一次, 666
+        while(t[i+1+p[i]] == t[i-1-p[i]])
+        {
+            cout << "left: " << i+1+p[i] << endl;
+            cout << "right: " << i-1-p[i] << endl;
+            p[i]++;
+        }
+        
+        if(i+p[i]>R)
+        {
+            C = i;
+            R = i + p[i];
+        }
+    }
+
+    int max_len = 0;
+    int center_idx = 0;
+    for(int i=1; i<n-1; i++)
+    {
+        if(p[i] > max_len)
+        {
+            max_len = p[i];
+            center_idx = i;
+        }
+    }
+    int start = (center_idx - max_len) / 2;
+    delete [] p;
+    return s.substr(start, max_len);
+}
+
+
 int main()
 {
-    string s = "awkca";
-    cout << longestPalindromeSubseqExtend(s) << endl;
+    string s = "wabwsw";
+    cout << Manacher(s) << endl;
     return 0;
 }

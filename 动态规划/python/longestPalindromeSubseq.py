@@ -6,6 +6,7 @@
 import numpy as np
 
 
+# 复杂度O(N^2)
 def longestPalindromeSubseq1(s):
     dp_table = np.zeros((len(s), len(s)), dtype=np.int32)
     for i in range(len(s)):
@@ -24,6 +25,7 @@ def longestPalindromeSubseq1(s):
     return res
 
 
+# 复杂度O(N^2)
 def longestPalindromeSubseq2(s):
     n = len(s)
     if n == 0:
@@ -43,6 +45,39 @@ def longestPalindromeSubseq2(s):
     return res
 
 
+# 时间复杂度O(N)
+def Manacher(s):
+    t = "$#"
+    for e in s:
+        t += e + "#"
+
+    center_idx = 0
+    max_len = 0
+    n = len(t)
+    C, R = 0, 0
+    p = [0] * n
+    for i in range(1, n-1):
+        i_mirror = 2 * C - i
+        if R > i:
+            p[i] = min(p[i_mirror], R - i)
+        else:
+            p[i] = 0
+
+        while i+1+p[i] < n and t[i+1+p[i]] == t[i-1-p[i]]:
+            p[i] += 1
+
+        if p[i] + i > R:
+            C = i
+            R = p[i] + C
+
+        if p[i] > max_len:
+            max_len = p[i]
+            center_idx = i
+
+    start = (center_idx - max_len) // 2
+    return s[start:(start+max_len)]
+
+
 if __name__ == "__main__":
-    s = "bb"
-    print(longestPalindromeSubseq2(s))
+    s = "wabwsw"
+    print(Manacher(s))

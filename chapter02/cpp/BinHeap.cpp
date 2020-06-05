@@ -2,6 +2,7 @@
 #include <vector>
 #include <string>
 #include <algorithm>
+#include <stdlib.h>
 
 using namespace std;
 
@@ -14,8 +15,8 @@ class MaxPQ
 {
 public:
     vector<int> pq;
-    MaxPQ(int cap = 0) { pq = vector<int>(cap + 1); }
-    //MaxPQ()                 {cout << "default constructor\n"; pq = vector<int>(1, 0);}
+    MaxPQ(int cap=0) { pq = vector<int>(cap + 1); }
+    // MaxPQ()                 {cout << "default constructor\n"; pq = vector<int>(1, 0);}
     int max() { return pq[1]; }
 
     // 静态操作
@@ -24,6 +25,12 @@ public:
     int left(int root) { return root * 2; }
     int right(int root) { return root * 2 + 1; }
     int size() { return pq.size(); }
+    void show() {
+        cout << "element of pq:  ";
+        for(int i=0; i<pq.size(); i++)
+            cout << pq[i] << "    ";
+        cout << endl;
+    }
 
     // 动态操作
     void exchange(int i, int j) { swap(pq[i], pq[j]); }
@@ -69,23 +76,21 @@ public:
 int main()
 {
     MaxPQ max_pq;
-    max_pq.insert(1);
-    max_pq.insert(2);
-    max_pq.insert(3);
-    max_pq.insert(4);
+    int n = 10;
+    int M = 100;
+    for(int i=0; i<n; i++)
+    {
+        int insert_num = rand() % M + 1;
+        cout << "insert: " << insert_num << endl;
+        max_pq.insert(insert_num);
+        max_pq.show();
 
-    cout << "element of pq:\n";
-    for (int i = 0; i < max_pq.size(); i++)
-        cout << max_pq.pq[i] << endl;
+    }
 
-    cout << "element of pq after del max:\n";
-    max_pq.del_max();
-    for (int i = 0; i < max_pq.size(); i++)
-        cout << max_pq.pq[i] << endl;
-
-    cout << "element of pq after del max:\n";
-    max_pq.del_max();
-    for (int i = 0; i < max_pq.size(); i++)
-        cout << max_pq.pq[i] << endl;
+    for(int i=0; i<n; i++)
+    {
+        cout << "del max element of pq: " << max_pq.del_max() << endl;
+        max_pq.show();
+    }
     return 0;
 }

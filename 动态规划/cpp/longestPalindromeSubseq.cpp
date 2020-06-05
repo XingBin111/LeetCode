@@ -87,11 +87,7 @@ string Manacher(string s) {
         
         // 不断向右拓展, 所有节点访问一次, 666
         while(t[i+1+p[i]] == t[i-1-p[i]])
-        {
-            cout << "left: " << i+1+p[i] << endl;
-            cout << "right: " << i-1-p[i] << endl;
             p[i]++;
-        }
         
         if(i+p[i]>R)
         {

@@ -46,6 +46,7 @@ def longestPalindromeSubseq2(s):
 
 
 # 时间复杂度O(N)
+# 参考: https://zhuanlan.zhihu.com/p/70532099
 def Manacher(s):
     t = "$#"
     for e in s:

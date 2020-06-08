@@ -27,7 +27,7 @@ def reverse_list_iterationN(head, N):
     翻转前N个节点
     """
     tmp = head
-    for i in range(N-1):
+    for i in range(N - 1):
         tmp = tmp.next
     nxt = tmp.next
     tmp.next = None
@@ -59,7 +59,7 @@ def reverse_list_recursiveN(head, N, successor=None):
         return head, successor
     else:
         successor = None
-    last, successor = reverse_list_recursiveN(head.next, N-1, successor)
+    last, successor = reverse_list_recursiveN(head.next, N - 1, successor)
     head.next.next = head
     head.next = successor
     return last, successor
@@ -72,7 +72,7 @@ def reverse_list_recursive_betweenMN(head, M, N):
     if M == 1:
         return reverse_list_recursiveN(head, N)[0]
 
-    head.next = reverse_list_recursive_betweenMN(head.next, M-1, N-1)
+    head.next = reverse_list_recursive_betweenMN(head.next, M - 1, N - 1)
     return head
 
 

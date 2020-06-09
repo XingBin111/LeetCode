@@ -30,6 +30,6 @@ def subarraySumDict(nums, k):
 
 
 if __name__ == "__main__":
-    nums = [1, 1, 1]
-    k = 2
+    nums = [1, 5, 10]
+    k = 15
     print(subarraySumDict(nums, k))

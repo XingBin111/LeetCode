@@ -17,17 +17,6 @@ bool is_in_area(const vector<vector<int> >& nums, int x, int y)
         return false;
 }
 
-bool is_on_boundary(const vector<vector<int> >& nums, int x, int y)
-{
-    int m = nums.size();
-    int n = nums[0].size();
-
-    if(x == 0 || x == m-1 || y == 0 || y == n-1)
-        return true;
-    else
-        return false;
-}
-
 // 该版本在old_color=new_color时会陷入死循环, 所以要记录搜索过的地方
 void flood_fill(vector<vector<int> >& nums, int x, int y, int old_color, int new_color)
 {   

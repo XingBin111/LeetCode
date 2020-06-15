@@ -42,11 +42,36 @@ int lis(const vector<int>& nums)
 
 int envelopes(const vector<vector<int> >& nums)
 {
-    vector<int> res(0, nums.size());
+    vector<int> height(nums.size(), 0);
     for(int i=0; i<nums.size(); i++)
-        res[i] = nums[i][1];
+        height[i] = nums[i][1];
 
-    return 0;
+    int piles = 1;
+    vector<int> res(1, height[0]);
+    for(int i=1; i<height.size(); i++)
+    {   
+        int right = res.size();
+        int h = height[i];
+        if(h > res[right-1])
+        {
+            res.push_back(h);
+            piles++;
+        }
+        else
+        {
+            int left = 0;
+            while(left < right)
+            {
+                int mid = (left + right) / 2;
+                if(height[mid] >= h)
+                    right = mid;
+                else
+                    left = mid + 1;
+            }
+            res[piles] = height[left];
+        }
+    }
+    return piles;
 }
 
 int main()
@@ -54,5 +79,6 @@ int main()
     vector<vector<int> > nums = {{5, 4}, {6, 4}, {6, 7}, {2, 3}};
     sort(nums.begin(), nums.end(), myfunction);
     show(nums);
+    cout << envelopes(nums) << endl;
     return 0;
 }

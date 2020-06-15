@@ -7,7 +7,7 @@ BinSearch要非常小心搜索区间:
 
 搜索区间决定了left和right和mid的关系:
 1. 搜索区间为[left, right), 那么left和right的更新为: left = mid + 1, right = mid;
-2. 搜索区间为[left, right), 那么left和right的更新为: left = mid + 1, right = mid + 1;
+2. 搜索区间为[left, right), 那么left和right的更新为: left = mid + 1, right = mid - 1;
 
 
 返回左侧边界和返回右侧边界决定了, 当nums[mid] == target的时候, 如何更新left和right:

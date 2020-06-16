@@ -73,5 +73,5 @@ if __name__ == "__main__":
         tmp = tmp.next
 
     # show_list(head)
-    new_head = reverse_list_group(head, 4)
+    new_head = reverse_list_between(head, None)
     show_list(new_head)

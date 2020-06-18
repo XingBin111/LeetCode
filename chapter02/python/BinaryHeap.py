@@ -37,8 +37,9 @@ class MaxPQ:
         max_e = self.pq[1]
         tail = self.pq.pop()
         self.N -= 1
-        self.pq[1] = tail
-        self.sink(1)
+        if self.N > 0:
+            self.pq[1] = tail
+            self.sink(1)
         return max_e
 
     # 上浮第k个元素, 以维护最大二叉堆性质
@@ -75,7 +76,22 @@ class MaxPQ:
         return root * 2 + 1
 
 
+# 堆排序, sink时间为O(logN), 进行N次sink, 所以时间效率为O(NlogN), 该版本的空间效率为O(N), 实际上可以进行in-place sort, 空间效率为O(1), 但由于
+# 上面堆实现的形式, 暂时无法使用in-place
+def head_sort(nums):
+    bh = MaxPQ(nums)
+    print(nums)
+
+    i = len(nums) - 1
+    while i >= 0:
+        nums[i] = bh.del_max()
+        i -= 1
+    return nums
+
+
 if __name__ == "__main__":
-    nums = [2, 5, 3, 7, 8, 1]
+    nums = [2, 5, 3, 7, 1, 8]
     bh = MaxPQ(nums)
     print(bh.pq)
+
+    print(head_sort(nums))

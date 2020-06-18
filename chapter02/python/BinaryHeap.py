@@ -1,12 +1,26 @@
+"""
+如何建立堆:
+1. 对空堆, 反复调用insert(O(logN)), 这样建堆的时间效率为O(NlogN), 不划算, 该时间足以给所有元素做全排序, 而堆里面还只是偏序
+2. 对无序的堆, 反复调用swim, 时间效率同上
+3. Floyd算法, 首先把所有无序的值存在堆里面, 然后自底向上进行sink, 这样每个元素最多sink一次, 所以时间效率为O(N)
+"""
+
+
 class MaxPQ:
     """
     最大二叉堆(也称优先级队列), 二叉堆其实就是完全二叉树, 但存在数组中, 把数组的索引当作指针
     最大二叉堆性质: 父节点 >= 左右节点
     插入和删除的时间复杂度为O(logN)
     """
-    def __init__(self):
-        self.pq = [0]
-        self.N = 0
+    def __init__(self, nums=None):
+        if nums is None:
+            self.pq = [0]
+            self.N = 0
+        else:
+            self.pq = [0] + nums
+            self.N = len(nums)
+            for i in range(self.N, 0, -1):
+                self.sink(i)
 
     # 返回当前队列中最大的元素
     def max(self):
@@ -59,3 +73,9 @@ class MaxPQ:
 
     def right(self, root):
         return root * 2 + 1
+
+
+if __name__ == "__main__":
+    nums = [2, 5, 3, 7, 8, 1]
+    bh = MaxPQ(nums)
+    print(bh.pq)

@@ -5,35 +5,34 @@ using namespace std;
 
 class Solution {
 public:
-    void move_right(vector<int>& arr, int k){
-        int n = arr.size() - 1;
-        while(n >= k){
-            arr[n] = arr[n-1];
-            n--;
+    vector<int> findDisappearedNumbers(vector<int>& nums)
+    {   
+        int n = nums.size();
+        for(int i=0; i<n; i++)
+        {
+            int tmp = abs(nums[i]);
+            nums[tmp-1] = -abs(nums[tmp-1]);
         }
-    }
-    void duplicateZeros(vector<int>& arr) {
-        int n = arr.size();
-        int i = 0;
-        while(i<n){
-            if(arr[i] == 0){
-                move_right(arr, i);
-                arr[i] = 0;
-                i += 2;
+        vector<int> res;
+        for(int i=0; i<n; i++)
+        {
+            if(nums[i]>0)
+            {
+                res.push_back(i+1);
             }
-            else
-                i++;
         }
+        return res;
     }
 };
 
 int main()
 {
-    vector<int> arr = {0,0,0,0,0,0,0};
+    vector<int> arr = {4,3,2,7,8,2,3,1};
     Solution s;
-    s.duplicateZeros(arr);
+    vector<int> k = s.findDisappearedNumbers(arr);
+    //cout << k << endl;
 
-    for(auto& x: arr)
-        cout << x << endl;
+    for(int i=0; i < k.size(); i++)
+        cout << k[i] << endl;
     return 0;
 }

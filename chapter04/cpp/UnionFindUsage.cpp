@@ -96,8 +96,12 @@ void solve(vector<vector<int> >& nums)
         for(int j=1; j<n-1; j++)
         {   
             if(nums[i][j] == 0)
-            int idx = i * m + j;
-            if(uf.connected(idx, m*n))
+                for(int k=0; k<4; k++)
+                {
+                    int idx = i * m + j;
+                    if(uf.connected(idx, m*n))
+                }
+            
         }
     }
 }

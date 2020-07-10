@@ -70,8 +70,8 @@ def max_profit_k_2(prices):
 
     n = len(prices)
 
-    dp_i10, dp_i11 = 0, -np.inf
-    dp_i20, dp_i21 = 0, -np.inf
+    dp_i10, dp_i11 = 0, -np.inf     # 交易一次, 手上没股票/有股票
+    dp_i20, dp_i21 = 0, -np.inf     # 交易两次, 手上没股票/有股票
     for i in range(n):
         dp_i20 = max(dp_i20, dp_i21+prices[i])
         dp_i21 = max(dp_i21, dp_i10-prices[i])

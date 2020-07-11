@@ -1,3 +1,7 @@
+"""
+查找数组元素中差值绝对值第K大的两个元素的差值
+"""
+
 class Solution(object):
     def smallestDistancePair(self, nums, k):
         """

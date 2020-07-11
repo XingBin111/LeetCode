@@ -39,6 +39,6 @@ class Solution:
 if __name__ == "__main__":
     s = Solution()
 
-    res = s.generateTrees(1)
+    res = s.generateTrees(2)
     for r in res:
         print(r.val)

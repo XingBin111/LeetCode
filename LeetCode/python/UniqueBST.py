@@ -7,6 +7,7 @@ class TreeNode:
     def is_leaf(self):
         return self.lchild is None and self.rchild is None
 
+
 class Solution:
 
     def generateTrees(self, n: int) -> [TreeNode]:
@@ -39,6 +40,6 @@ class Solution:
 if __name__ == "__main__":
     s = Solution()
 
-    res = s.generateTrees(2)
+    res = s.generateTrees(3)
     for r in res:
         print(r.val)

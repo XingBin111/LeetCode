@@ -35,10 +35,27 @@ def fill_boundary(image, x, y, orig_color, new_color, visited):
         return 0
 
     visited[x][y] = True
-    surround = fill_boundary(image, x, y + 1, orig_color, new_color, visited) + \
-                fill_boundary(image, x, y - 1, orig_color, new_color, visited) + \
-                fill_boundary(image, x + 1, y, orig_color, new_color, visited) + \
-                fill_boundary(image, x - 1, y, orig_color, new_color, visited)
+    surround = fill_boundary(image,
+                             x,
+                             y + 1,
+                             orig_color,
+                             new_color,
+                             visited) + fill_boundary(image,
+                                                      x,
+                                                      y - 1,
+                                                      orig_color,
+                                                      new_color,
+                                                      visited) + fill_boundary(image,
+                                                                               x + 1,
+                                                                               y,
+                                                                               orig_color,
+                                                                               new_color,
+                                                                               visited) + fill_boundary(image,
+                                                                                                        x - 1,
+                                                                                                        y,
+                                                                                                        orig_color,
+                                                                                                        new_color,
+                                                                                                        visited)
 
     if surround < 4:
         image[x][y] = new_color

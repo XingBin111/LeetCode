@@ -34,7 +34,7 @@ def count(root, target):
 def path_sum_good(root, target):
     if root is None:
         return 0
-    return count(root, target) + count(root.left, target) + count(root.right, target)
+    return count(root, target) + path_sum_good(root.left, target) + path_sum_good(root.right, target)
 
 
 if __name__ == "__main__":

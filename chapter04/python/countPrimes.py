@@ -46,7 +46,7 @@ def countPrimesI(n):
 
 def countPrimesII(n):
     prim_arr = [True] * n
-    for i in range(2, n):
+    for i in range(2, int(np.sqrt(n))+1):
         if prim_arr[i]:
             for j in range(i**2, n, i):
                 prim_arr[j] = False

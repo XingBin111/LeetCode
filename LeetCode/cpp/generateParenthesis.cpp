@@ -33,7 +33,7 @@ public:
 
 int main()
 {
-    int n = 4;
+    int n = 3;
     Solution s;
     vector<string> v = s.generateParenthesis(n);
     for(auto&x: v)

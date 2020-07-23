@@ -1,3 +1,27 @@
+#include <iostream>
+#include <vector>
+#include <stack>
+#include <queue>
+
+using namespace std;
+
+struct ListNode {
+    int val;
+    ListNode *next;
+    ListNode() : val(0), next(NULL) {}
+    ListNode(int x) : val(x), next(NULL) {}
+    ListNode(int x, ListNode *next) : val(x), next(next) {}
+};
+
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode() : val(0), left(NULL), right(NULL) {}
+    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+};
+
 class Solution {
 public:
     vector<TreeNode*> generate(int start, int end)

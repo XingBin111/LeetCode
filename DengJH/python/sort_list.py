@@ -22,6 +22,7 @@ def partitionII(start, end):
     swap(start, mi)
     return mi
 
+
 # 若每次划分平均(轴点的选取都接近中央), 时间效率为O(nlogn), 若每次划分都极不平均(轴点总是最大或最小元素), 时间效率为O(n^2)
 # 但平均性能为O(nlogn), 搜索区间为[lo, hi)
 def quick_sort(start, end):
@@ -30,6 +31,18 @@ def quick_sort(start, end):
     mi = partitionII(start, end)
     quick_sort(start, mi)
     quick_sort(mi.next, end)
+
+
+def insert_sort(nums):
+    pass
+
+
+def merge_sort(nums):
+    pass
+
+
+def select_sort(nums):
+    pass
 
 
 if __name__ == "__main__":
@@ -44,4 +57,3 @@ if __name__ == "__main__":
     while head is not None:
         print(head.val)
         head = head.next
-

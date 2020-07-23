@@ -53,7 +53,42 @@ def quick_sort(nums, lo=0, hi=1):
     quick_sort(nums, mi+1, hi)
 
 
+def bubble_sort(nums):
+    n = len(nums)
+    sort = True
+    for i in range(n):
+        for j in range(0, n-i-1):
+            if nums[j] > nums[j+1]:
+                nums[j], nums[j+1] = nums[j+1], nums[j]
+                sort = False
+        if sort:
+            break
+        else:
+            sort = True
+
+
+def select_sort(nums):
+    n = len(nums)
+    for i in range(n-1):
+        min_idx = nums[i]
+        for j in range(i+1, n):
+            if nums[j] < nums[min_idx]:
+                min_idx = j
+
+        nums[min_idx], nums[i] = nums[i], nums[min_idx]
+
+
+def merge_sort(nums):
+    pass
+
+
+def insert_sort(nums):
+    pass
+
+
 if __name__ == "__main__":
     nums = [6, 3, 8, 2, 5, 9, 4, 5, 1, 7]
     quick_sort(nums, 0, len(nums))
+    # select_sort(nums)
     print(nums)
+

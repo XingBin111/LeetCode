@@ -1,3 +1,7 @@
+/* 
+用于解决CRNN中: Lexicon-based transcription, 使用BK-Tree能够在词典里快速查找 "编辑距离<=TOL" 的sequence.
+*/
+
 #include <iostream>
 #include <vector>
 #include <string>

@@ -1,3 +1,12 @@
+"""
+给定n, 返回所有存储1~n的BST.
+
+这道题的解题依据依然是：
+当数组为 1，2，3，4，.. i，.. n时，基于以下原则的BST建树具有唯一性：
+以i为根节点的树，其左子树由[1, i-1]构成， 其右子树由[i+1, n]构成。 
+"""
+
+
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
@@ -41,5 +50,6 @@ if __name__ == "__main__":
     s = Solution()
 
     res = s.generateTrees(3)
+    print(res)
     for r in res:
         print(r.val)

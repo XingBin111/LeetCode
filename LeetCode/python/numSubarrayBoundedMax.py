@@ -27,6 +27,7 @@ class Solution:
             if A[i] < L and i > 0:
                 res += dp
             if A[i] > R:
+                dp = 0
                 prev = i
             if L <= A[i] <= R:
                 dp = i - prev

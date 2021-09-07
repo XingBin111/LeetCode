@@ -48,8 +48,14 @@ def partitionII(nums, lo, hi):
 def quick_sort(nums, lo=0, hi=1):
     if hi - lo < 2:
         return
+
+    # mi已经排序好了
     mi = partitionII(nums, lo, hi-1)
+
+    # 排序[lo, mi)
     quick_sort(nums, lo, mi)
+
+    # 排序[mi+1, hi)
     quick_sort(nums, mi+1, hi)
 
 

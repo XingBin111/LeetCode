@@ -71,7 +71,6 @@ int main(){
     string s = "babad";
 
     string res = longestPalindromeII(s);
-    cout << -12 % 10 << endl;
     cout << res << endl;
     return 0;
 }

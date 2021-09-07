@@ -85,7 +85,7 @@ def bst_get_min(root):
 # 情况1: node.val=target的节点是叶节点, 那么直接令 node = None
 # 情况2: node.val=target的节点无左孩子, 那么直接令 node = node.rchild, 无右节点, 就直接令 node = node.lchild
 # 情况3: node.val=target的节点有左右孩子, 直接令 node = 左子树中最大或右子树最小, 下面代码是取右子树最小
-def delete_taget_in_bst(root, target):
+def delete_target_in_bst(root, target):
     if root is None:
         return None
 
@@ -97,12 +97,12 @@ def delete_taget_in_bst(root, target):
 
         x = bst_get_min(root.rchild)
         root.val = x.val
-        root.rchild = delete_taget_in_bst(root.rchild, x.val)
+        root.rchild = delete_target_in_bst(root.rchild, x.val)
 
     elif target > root.val:
-        root.rchild = delete_taget_in_bst(root.rchild, target)
+        root.rchild = delete_target_in_bst(root.rchild, target)
     else:
-        root.lchild = delete_taget_in_bst(root.lchild, target)
+        root.lchild = delete_target_in_bst(root.lchild, target)
     return root
 
 
@@ -145,5 +145,5 @@ if __name__ == "__main__":
     # insert_in_bst(bst_root, 3)
     show_tree(bst_root)
     print("delete:")
-    delete_taget_in_bst(bst_root, 10)
+    delete_target_in_bst(bst_root, 10)
     show_tree(bst_root)

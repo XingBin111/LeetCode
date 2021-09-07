@@ -53,7 +53,6 @@ class SlowFastPointer:
             slow = slow.next
         return slow
 
-
     @staticmethod
     def reciprocal(head: ListNode, k: int):
         """

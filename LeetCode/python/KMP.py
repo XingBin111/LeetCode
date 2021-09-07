@@ -51,5 +51,5 @@ if __name__ == "__main__":
     # txt = "CABAABABAC"
 
     pat = "000010"
-    txt = "0001000010"
+    txt = "0001000011"
     print(kmp(txt, pat))

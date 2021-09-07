@@ -5,7 +5,7 @@ class lengthOfLongestSubstring:
     """
     @staticmethod
     def lengthOfLongestSubstring(s):
-        res = []
+        res = ""
         left = 0
         right = 0
         while right < len(s):

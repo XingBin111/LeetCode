@@ -25,7 +25,7 @@ class MontionicQueue:
             self.deque.popleft()
 
 
-def max_slinding_window(nums, k):
+def max_sliding_window(nums, k):
     dq = MontionicQueue()
     res = []
     for i in range(len(nums)):
@@ -41,4 +41,4 @@ def max_slinding_window(nums, k):
 if __name__ == "__main__":
     nums = [1, 3, -1, -3, 5, 3, 6, 7]
     k = 3
-    print(max_slinding_window(nums, k))
+    print(max_sliding_window(nums, k))

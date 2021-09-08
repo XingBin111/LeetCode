@@ -6,7 +6,7 @@ class BinSearch:
     @staticmethod
     def binSearch(nums, target):
         """
-        二分查找, 碰到连续相等的元素会返回其中某个索引
+        BinSearch, 碰到连续相等的元素会返回其中某个索引
         """
         left = 0
         right = len(nums) - 1
@@ -27,7 +27,7 @@ class BinSearch:
     @staticmethod
     def left_bound(nums, target):
         """
-        二分查找, 碰到连续相等的元素会返回最左边的索引, 该版本在while中使用<=, 与最开始的binSearch保持一致
+        BinSearch, 碰到连续相等的元素会返回最左边的索引, 该版本在while中使用<=, 与最开始的binSearch保持一致
         """
         left = 0
         right = len(nums) - 1

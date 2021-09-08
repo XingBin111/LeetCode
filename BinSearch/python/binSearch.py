@@ -6,7 +6,7 @@ class BinSearch:
     @staticmethod
     def binSearch(nums, target):
         """
-        二分查找, 碰到连续相等的元素会返回其中某个索引
+        BinSearch, 碰到连续相等的元素会返回其中某个索引
         """
         if len(nums) == 0:
             return -1
@@ -28,7 +28,7 @@ class BinSearch:
     @staticmethod
     def left_bound(nums, target):
         """
-        二分查找, 碰到连续相等的元素会返回最左边的索引, 首先找到数组中小于target的元素个数.
+        BinSearch, 碰到连续相等的元素会返回最左边的索引, 首先找到数组中小于target的元素个数.
         在元素插入时很重要.
         """
         if len(nums) == 0:

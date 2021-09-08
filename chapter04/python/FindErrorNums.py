@@ -4,7 +4,7 @@
 """
 
 
-def find_error_eums(nums):
+def find_error_nums(nums):
     n = len(nums)
     dup = -1
     for i in range(n):
@@ -23,4 +23,4 @@ def find_error_eums(nums):
 
 if __name__ == "__main__":
     nums = [4, 1, 4, 2]
-    print(find_error_eums(nums))
+    print(find_error_nums(nums))

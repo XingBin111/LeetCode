@@ -16,8 +16,8 @@ def interval_intersection(A, B):
         a1, a2 = A[i][0], A[i][1]
         b1, b2 = B[j][0], B[j][1]
 
-        c1 = max(A[i][0], B[j][0])
-        c2 = min(A[i][1], B[j][1])
+        c1 = max(a1, b1)
+        c2 = min(a2, b2)
 
         if c2 >= c1:
             res.append([c1, c2])

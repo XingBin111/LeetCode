@@ -53,15 +53,14 @@ def trap_double_pointer(nums):
     r_max = nums[-1]
 
     while left <= right:
-        l_max = max(l_max, nums[left])
-        r_max = max(r_max, nums[right])
-
-        if l_max < r_max:
-            res += l_max - nums[left]
-            left += 1
-        else:
-            res += r_max - nums[right]
+        if l_max > r_max:
+            res += max(r_max - nums[right], 0)
             right -= 1
+            r_max = max(r_max, nums[right])
+        else:
+            res += max(l_max - nums[left], 0)
+            left += 1
+            l_max = max(l_max, nums[left])
     return res
 
 

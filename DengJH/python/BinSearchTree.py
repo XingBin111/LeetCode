@@ -22,7 +22,7 @@ class TreeNode:
         return self.lchild is None and self.rchild is None
 
 
-def isValidBST(root, min_val=None, max_val=None):
+def is_valid_bst(root, min_val=None, max_val=None):
     if root is None:
         return True
 
@@ -32,7 +32,7 @@ def isValidBST(root, min_val=None, max_val=None):
     if max_val is not None and root.val > max_val.val:
         return False
 
-    return isValidBST(root.lchild, min_val, root) and isValidBST(root.rchild, root, max_val)
+    return is_valid_bst(root.lchild, min_val, root) and is_valid_bst(root.rchild, root, max_val)
 
 
 def insert(root, val):
@@ -54,7 +54,7 @@ def show_tree(root):
     show_tree(root.rchild)
 
 
-def getMin(root):
+def get_min(root):
     while root.lchild is not None:
         root = root.lchild
     return root
@@ -71,7 +71,7 @@ def delete(root, val):
         elif root.rchild is None:
             return root.lchild
         else:
-            node = getMin(root)
+            node = get_min(root)
             root.val = node.val
             root.rchild = delete(root.rchild, node.val)
     else:
@@ -109,8 +109,8 @@ if __name__ == "__main__":
     root1.lchild.rchild = TreeNode(6)
     root1.rchild.lchild = TreeNode(7)
 
-    # print(isValidBST(bst_root))
-    # print(isValidBST(root))
+    # print(is_valid_bst(bst_root))
+    # print(is_valid_bst(root))
 
     # bst_root = insert(bst_root, 2)
 

@@ -32,8 +32,10 @@ def majEleCheck(nums, maj):
 
 def majority(nums):
     maj = majEleCandidate(nums)
-    return majEleCheck(nums, maj)
-
+    if majEleCheck(nums, maj):
+        return maj
+    else:
+        return None
 
 if __name__ == "__main__":
     nums = [1, 6, 8, 1, 9, 1, 2, 1, 1]

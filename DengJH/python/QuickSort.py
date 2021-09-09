@@ -17,6 +17,7 @@ class ListQuickSort:
         start_node.val, mid_node.val = mid_node.val, start_node.val
         return mid_node
 
+    # [start_node, end_node)
     def quick_sort(self, start_node, end_node):
         if start_node == end_node or start_node.next == end_node:
             return
@@ -50,7 +51,7 @@ class VectorQuickSort:
 if __name__ == "__main__":
     nums = [6, 3, 8, 2, 5, 9, 4, 5, 1, 7]
     vqs = VectorQuickSort()
-    vqs.quick_sort(nums, 0, len(nums)-1)
+    vqs.quick_sort(nums, 0, len(nums) - 1)
     # select_sort(nums)
     print(nums)
 

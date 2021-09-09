@@ -24,7 +24,7 @@ def travel_in(root):
     travel_in(root.rchild)
 
 
-def goAlongLeftBranch(root, s):
+def go_along_left_branch(root, s):
     while root is not None:
         s.append(root)
         root = root.lchild
@@ -35,7 +35,7 @@ def travel_in_iteration(root):
     s = []
     x = root
     while True:
-        s = goAlongLeftBranch(x, s)
+        s = go_along_left_branch(x, s)
         if len(s) == 0:
             break
         x = s.pop()

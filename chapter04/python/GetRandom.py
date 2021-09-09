@@ -20,7 +20,7 @@ def get_random(head):
     i = 0
     res = 0
     while p is not None:
-        # 生成[0, i)之间的随机数
+        # 生成[0, i]之间的随机数
         r = np.random.randint(0, i + 1)
 
         if r == 0:
